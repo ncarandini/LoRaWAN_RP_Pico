@@ -27,8 +27,9 @@ def send_temperature_by_lorawan():
         utime.sleep(0.3)
 
     utime.sleep(0.002)
-    uart0.write("{0:05}T{1:.2f}".format(count, temperature_celsius).encode('ascii'))
     # print("Sent temperature: {0:05}T{1:.2f}".format(count, temperature_celsius).encode('ascii'))
+    uart0.write("{0:05}T{1:.2f}".format(count, temperature_celsius).encode('ascii'))
+    
 
     count += 1
 
@@ -37,13 +38,3 @@ while True:
     send_temperature_by_lorawan()
     led.value(False)
     utime.sleep(3)
-
-# txData = b'hello world\n\r'
-# uart0.write(txData)
-# time.sleep(0.1)
-
-# rxData = bytes()
-# while uart0.any() > 0:
-#     rxData += uart0.read(1)
-
-
